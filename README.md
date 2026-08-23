@@ -106,6 +106,44 @@ node --version
 npm --version
 ```
 
+### Как открыть терминал именно в папке проекта
+
+Все команды `npm` и `npx wrangler` из этой инструкции нужно выполнять в
+терминале, открытом в папке проекта. Иначе Wrangler может не найти
+`wrangler.toml`, исходный код или установленные зависимости.
+
+Папка проекта — это папка, где лежат `README.md`, `package.json`, `wrangler.toml`
+и каталог `src`.
+
+Самый простой способ в Windows:
+
+1. Откройте папку проекта в Проводнике.
+2. Кликните мышкой по адресной строке сверху, где написан путь к папке.
+3. Введите `powershell`.
+4. Нажмите Enter.
+
+Откроется PowerShell уже в правильной папке. Проверьте это командой:
+
+```powershell
+Get-Location
+```
+
+В результате должен быть путь к папке `telegram-anonymous-suggestion-bot`.
+
+Другой способ — открыть PowerShell в любом месте и перейти в папку командой:
+
+```powershell
+cd "$env:USERPROFILE\Desktop\telegram-anonymous-suggestion-bot"
+```
+
+Перед каждой командой Wrangler можно проверить содержимое текущей папки:
+
+```powershell
+dir
+```
+
+В списке должны быть `wrangler.toml`, `package.json` и папка `src`.
+
 В папке проекта установите зависимости:
 
 ```powershell
@@ -447,43 +485,6 @@ npx wrangler tail
 ```
 
 Не публикуйте логи, если в них есть секретный URL webhook или личные данные.
-
-## GitHub
-
-Перед публикацией убедитесь, что в репозитории нет:
-
-- `.env`;
-- токена Telegram;
-- `WEBHOOK_SECRET`;
-- реальных ID групп, каналов и администраторов;
-- `node_modules`;
-- `.wrangler`.
-
-Создайте новый репозиторий на `https://github.com/new`, например
-`telegram-anonymous-suggestion-bot`. Затем в PowerShell из папки проекта:
-
-```powershell
-git init
-git add .
-git commit -m "Initial anonymous Telegram suggestion bot"
-git branch -M main
-git remote add origin https://github.com/ВАШ_GITHUB/telegram-anonymous-suggestion-bot.git
-git push -u origin main
-```
-
-Если GitHub спросит пароль, используйте Personal Access Token или GitHub CLI,
-а не пароль от аккаунта.
-
-После публикации другие люди смогут склонировать проект:
-
-```powershell
-git clone https://github.com/ВАШ_GITHUB/telegram-anonymous-suggestion-bot.git
-cd telegram-anonymous-suggestion-bot
-npm install
-```
-
-Каждый пользователь должен создать свои Cloudflare KV, свои секреты, своего
-Telegram-бота и свой webhook. Не используйте чужие токены, ID или namespace.
 
 ## Лицензия
 
