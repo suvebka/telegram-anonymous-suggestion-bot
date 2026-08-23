@@ -1,4 +1,4 @@
-# Анонимная предложка для Telegram на Cloudflare Workers
+# Анонимная (почти) предложка для Telegram на Cloudflare Workers
 
 Этот проект создаёт Telegram-бота для анонимных предложений.
 
