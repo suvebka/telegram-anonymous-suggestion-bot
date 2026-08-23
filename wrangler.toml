@@ -1,0 +1,16 @@
+name = "telegram-anonymous-suggestion-bot"
+main = "src/index.js"
+compatibility_date = "2026-08-23"
+
+[[kv_namespaces]]
+binding = "SUGGESTIONS"
+# Replace this with the id printed by `npx wrangler kv namespace create SUGGESTIONS`.
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[[durable_objects.bindings]]
+name = "ALBUMS"
+class_name = "AlbumCoordinator"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["AlbumCoordinator"]
